@@ -20,13 +20,8 @@ export default function InlineSubMenuList({
 }: InlineSubMenuListProps) {
   const fixedMode: MenuMode = 'inline';
 
-  const {
-    prefixCls,
-    forceSubMenuRender,
-    motion,
-    defaultMotions,
-    mode,
-  } = React.useContext(MenuContext);
+  const { prefixCls, forceSubMenuRender, motion, defaultMotions, mode } =
+    React.useContext(MenuContext);
 
   // Always use latest mode check
   const sameModeRef = React.useRef(false);
@@ -77,10 +72,11 @@ export default function InlineSubMenuList({
         removeOnLeave={false}
         leavedClassName={`${prefixCls}-hidden`}
       >
-        {({ className: motionClassName, style: motionStyle }) => {
+        {({ className: motionClassName, style: motionStyle }, ref) => {
           return (
             <SubMenuList
               id={id}
+              ref={ref}
               className={motionClassName}
               style={motionStyle}
             >
